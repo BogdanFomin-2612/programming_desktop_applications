@@ -1,4 +1,4 @@
-# Homeroom Hub 🏫
+# Classoom Hub 🏫
 
 A desktop laboratory management application for teachers.  
 Built with **Electron + Node.js** (frontend), **Python FastAPI** (backend), **MongoDB Atlas** (database).
