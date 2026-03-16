@@ -1,0 +1,12 @@
+Wymagania:
+
+Aplikacja monitorująca obecność na zajęciach, aktywność, oceny i przeglądy kodu.
+
+-python (api)
+-nodejs + electron
+-mongodb
+-obecność: 75% - zaczynamy rozmawiać o zaliczeniu
+-praca w zespołach 2-3 osoby
+-PRACA W GITHUB + notacje (Aby zobaczyć, kto i kiedy pełnił jaką funkcję)
+-program do prowadzenia laboratoriów
+-prototyp w Figma z "make ai"
