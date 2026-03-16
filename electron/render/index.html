@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Homeroom Hub — Teacher Portal</title>
+  <meta name="description" content="Lab management portal for teachers: attendance, grades, code reviews."/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- ===== APP HEADER ===== -->
+<header class="app-header">
+  <div class="header-left">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <rect width="28" height="28" rx="8" fill="#2563EB"/>
+        <path d="M7 14l5 5 9-9" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="header-title-block">
+      <h1 class="header-title">Homeroom Hub</h1>
+      <span class="header-subtitle">Grade 10A — Teacher Portal</span>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="theme-toggle" id="themeToggle" title="Toggle dark/light mode">
+      <svg class="theme-icon sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+      <div class="toggle-track">
+        <div class="toggle-thumb"></div>
+      </div>
+      <svg class="theme-icon moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="main-content" id="mainContent">
+
+  <!-- ─── DASHBOARD TAB ─── -->
+  <section id="tabDashboard" class="tab-panel active">
+    <div class="content-wrapper">
+
+      <!-- Class Summary Card -->
+      <div class="summary-card">
+        <div class="summary-left">
+          <div class="summary-badge">Grade 10A</div>
+          <div class="summary-label">Homeroom Class</div>
+        </div>
+        <div class="summary-right">
+          <div class="summary-count" id="dashStudentCount">10</div>
+          <div class="summary-count-label">Students</div>
+        </div>
+      </div>
+
+      <!-- Today's Attendance -->
+      <div class="card" id="attendanceCard">
+        <div class="card-header">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
+          </svg>
+          <span>Today's Attendance</span>
+        </div>
+        <div class="attendance-stats">
+          <div class="attendance-main">
+            <div class="attendance-rate" id="attendanceRate">--%</div>
+            <div class="attendance-label">Rate</div>
+          </div>
+          <div class="attendance-divider"></div>
+          <div class="attendance-main">
+            <div class="attendance-present-count" id="attendancePresentCount">--/--</div>
+            <div class="attendance-label">Present</div>
+          </div>
+        </div>
+        <div class="attendance-badges">
+          <div class="badge-box present">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span id="countPresent">-</span>
+            <span class="badge-label">Present</span>
+          </div>
+          <div class="badge-box late">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span id="countLate">-</span>
+            <span class="badge-label">Late</span>
+          </div>
+          <div class="badge-box absent">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            <span id="countAbsent">-</span>
+            <span class="badge-label">Absent</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Class GPA Trend -->
+      <div class="card" id="gpaCard">
+        <div class="card-header">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
+          </svg>
+          <span>Class GPA Trend</span>
+        </div>
+        <div class="gpa-stats">
+          <div>
+            <div class="gpa-value" id="avgGpa">--</div>
+            <div class="gpa-sublabel">Current Average GPA</div>
+          </div>
+          <div class="gpa-badge positive">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+            <span id="gpaChange">Calculated from grades</span>
+          </div>
+        </div>
+        <div class="gpa-bar-container">
+          <div class="gpa-bar-track">
+            <div class="gpa-bar-fill" id="gpaBarFill"></div>
+          </div>
+          <div class="gpa-bar-labels">
+            <span>0</span><span>5</span><span>10</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Critical Alerts -->
+      <div class="card" id="alertsCard">
+        <div class="card-header">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <span>Critical Alerts</span>
+          <div class="alert-count-badge" id="alertCountBadge">0</div>
+        </div>
+        <div id="alertsList" class="alerts-list">
+          <div class="loading-state">Loading alerts…</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── ROSTER TAB ─── -->
+  <section id="tabRoster" class="tab-panel">
+    <div class="content-wrapper">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Class Roster</h2>
+          <p class="section-sub" id="rosterSubtitle">Grade 10A — 10 students</p>
+        </div>
+      </div>
+      <div id="studentList" class="student-list">
+        <div class="loading-state">Loading students…</div>
+      </div>
+    </div>
+    <!-- FAB -->
+    <button class="fab" id="addStudentBtn" title="Add student">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
+        <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+      </svg>
+    </button>
+  </section>
+
+  <!-- ─── GRADES TAB ─── -->
+  <section id="tabGrades" class="tab-panel">
+    <div class="content-wrapper">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Grades</h2>
+          <p class="section-sub">All student grades across subjects</p>
+        </div>
+        <button class="btn-primary" id="addGradeBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+          Add Grade
+        </button>
+      </div>
+      <div class="grades-filters">
+        <select id="gradeFilterSubject" class="filter-select">
+          <option value="">All Subjects</option>
+        </select>
+        <select id="gradeFilterStudent" class="filter-select">
+          <option value="">All Students</option>
+        </select>
+      </div>
+      <div id="gradesTable" class="grades-table-wrapper">
+        <div class="loading-state">Loading grades…</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CODE REVIEW TAB ─── -->
+  <section id="tabCodeReview" class="tab-panel">
+    <div class="content-wrapper">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Code Review</h2>
+          <p class="section-sub">Submit and review student code submissions</p>
+        </div>
+        <button class="btn-primary" id="addReviewBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+          New Review
+        </button>
+      </div>
+      <div id="reviewsList" class="reviews-list">
+        <div class="loading-state">Loading reviews…</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== BOTTOM NAVIGATION ===== -->
+<nav class="bottom-nav">
+  <button class="nav-btn active" data-tab="Dashboard" id="navDashboard">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+    </svg>
+    <span>Dashboard</span>
+  </button>
+  <button class="nav-btn" data-tab="Roster" id="navRoster">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
+      <path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
+    </svg>
+    <span>Roster</span>
+  </button>
+  <button class="nav-btn" data-tab="Grades" id="navGrades">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/>
+      <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+    </svg>
+    <span>Grades</span>
+  </button>
+  <button class="nav-btn" data-tab="CodeReview" id="navCodeReview">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+    </svg>
+    <span>Code Review</span>
+  </button>
+</nav>
+
+<!-- ===== MODALS ===== -->
+
+<!-- Student Modal -->
+<div class="modal-overlay" id="studentModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 class="modal-title" id="studentModalTitle">Add Student</h3>
+      <button class="modal-close" id="closeStudentModal">&times;</button>
+    </div>
+    <form id="studentForm" class="modal-form">
+      <input type="hidden" id="studentId"/>
+      <div class="form-group">
+        <label class="form-label">Full Name</label>
+        <input type="text" class="form-input" id="studentName" placeholder="Emma Johnson" required/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-input" id="studentEmail" placeholder="emma.j@school.edu" required/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Avatar Color</label>
+        <div class="color-picker">
+          <div class="color-option" data-color="#2563EB" style="background:#2563EB" title="Blue"></div>
+          <div class="color-option" data-color="#7C3AED" style="background:#7C3AED" title="Purple"></div>
+          <div class="color-option" data-color="#16A34A" style="background:#16A34A" title="Green"></div>
+          <div class="color-option" data-color="#EA580C" style="background:#EA580C" title="Orange"></div>
+          <div class="color-option" data-color="#DB2777" style="background:#DB2777" title="Pink"></div>
+          <div class="color-option" data-color="#0891B2" style="background:#0891B2" title="Cyan"></div>
+          <div class="color-option" data-color="#65A30D" style="background:#65A30D" title="Lime"></div>
+          <div class="color-option" data-color="#B45309" style="background:#B45309" title="Amber"></div>
+        </div>
+        <input type="hidden" id="studentColor" value="#2563EB"/>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn-secondary" id="cancelStudentModal">Cancel</button>
+        <button type="submit" class="btn-primary">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Grade Modal -->
+<div class="modal-overlay" id="gradeModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 class="modal-title">Add Grade</h3>
+      <button class="modal-close" id="closeGradeModal">&times;</button>
+    </div>
+    <form id="gradeForm" class="modal-form">
+      <div class="form-group">
+        <label class="form-label">Student</label>
+        <select class="form-input" id="gradeStudentId" required></select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Subject</label>
+        <input type="text" class="form-input" id="gradeSubject" placeholder="Math" required/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Grade (0–10)</label>
+        <input type="number" class="form-input" id="gradeValue" min="0" max="10" step="0.5" required/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Date</label>
+        <input type="date" class="form-input" id="gradeDate" required/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Description</label>
+        <input type="text" class="form-input" id="gradeDescription" placeholder="Midterm exam"/>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn-secondary" id="cancelGradeModal">Cancel</button>
+        <button type="submit" class="btn-primary">Save Grade</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Code Review Modal -->
+<div class="modal-overlay" id="reviewModal">
+  <div class="modal modal-wide">
+    <div class="modal-header">
+      <h3 class="modal-title" id="reviewModalTitle">New Code Review</h3>
+      <button class="modal-close" id="closeReviewModal">&times;</button>
+    </div>
+    <form id="reviewForm" class="modal-form">
+      <input type="hidden" id="reviewId"/>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Student</label>
+          <select class="form-input" id="reviewStudentId" required></select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Language</label>
+          <select class="form-input" id="reviewLanguage">
+            <option>Python</option>
+            <option>JavaScript</option>
+            <option>Java</option>
+            <option>C++</option>
+            <option>C#</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Title</label>
+        <input type="text" class="form-input" id="reviewTitle" placeholder="Bubble Sort Implementation" required/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Code</label>
+        <textarea class="form-input form-textarea code-area" id="reviewCode" rows="7" placeholder="Paste student code here…" required></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Feedback</label>
+        <textarea class="form-input form-textarea" id="reviewFeedback" rows="3" placeholder="Your feedback…"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Score (0–10)</label>
+        <input type="number" class="form-input" id="reviewScore" min="0" max="10" step="0.5"/>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn-secondary" id="cancelReviewModal">Cancel</button>
+        <button type="submit" class="btn-primary">Save Review</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Toast notification -->
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
